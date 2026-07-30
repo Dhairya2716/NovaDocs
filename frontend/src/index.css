@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-600/60;
+  }
+  html {
+    scroll-behavior: auto;
+    color-scheme: dark;
+  }
+  body {
+    @apply antialiased bg-ink-950 text-mist-300;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  ::selection {
+    background: rgba(232, 168, 56, 0.30);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #E8A838;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] shadow-glass;
+  }
+  .glass-heavy {
+    @apply bg-ink-900/80 backdrop-blur-2xl border border-white/[0.10] shadow-glass;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-[0.18em] uppercase text-mist-500;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-signal-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-all duration-300 hover:bg-signal-400 hover:shadow-glow active:scale-[0.97];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-mist-100 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/[0.07] active:scale-[0.97];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-mist-500 transition-all duration-200 hover:text-mist-100 hover:bg-white/[0.05] active:scale-[0.97];
+  }
+  .citation-chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-citation-500/40 bg-citation-500/10 px-2 py-0.5 font-mono text-[11px] font-medium text-citation-300 transition-colors hover:bg-citation-500/20 cursor-pointer;
+  }
+  .shimmer-text {
+    background: linear-gradient(
+      90deg,
+      rgba(237, 238, 242, 0.55) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(237, 238, 242, 0.55) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    @apply animate-shimmer;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-white/[0.10] bg-white/[0.04] px-4 py-3 text-sm text-mist-100 placeholder-mist-700 outline-none transition-all duration-200 focus:border-signal-500/60 focus:bg-white/[0.06] focus:shadow-glow;
+  }
+  .status-processing {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-signal-500/15 px-2.5 py-1 text-[11px] font-medium text-signal-400;
+  }
+  .status-ready {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-vector-500/15 px-2.5 py-1 text-[11px] font-medium text-vector-400;
+  }
+  .status-error {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-red-500/15 px-2.5 py-1 text-[11px] font-medium text-red-400;
+  }
+  .tab-active {
+    @apply text-mist-100 border-b-2 border-signal-500 pb-3;
+  }
+  .tab-inactive {
+    @apply text-mist-700 border-b-2 border-transparent pb-3 hover:text-mist-300 transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+  .card-flip-container {
+    perspective: 1000px;
+  }
+  .card-flip-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-flip-inner.flipped {
+    transform: rotateY(180deg);
+  }
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+  }
+}
