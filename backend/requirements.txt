@@ -4,8 +4,11 @@ sqlalchemy==2.0.35
 psycopg2-binary==2.9.9
 pgvector==0.3.4
 pyjwt==2.9.0
-passlib[bcrypt]==1.7.4
+bcrypt==5.0.0
 python-multipart==0.0.9
 python-dotenv==1.0.1
 supabase==2.9.0
 pydantic==2.9.2
+pymupdf==1.24.10
+sentence-transformers==3.1.1
+groq==0.11.0
